@@ -1,1 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://unpkg.com/chronos-timeline-md@latest/dist/iife-entry.global.js"></script>
+   <meta charset="UTF-8">
+  </head>
+  <body style="background-color:lightgrey">
+    <h1>Appendices for "<a href="https://recurse.zulipchat.com/user_uploads/13/iE1B8Psr18tmKSqZ0LcKVGmF/PLIG.pdf">70 Years of Programming</a> in 24 Little-Known Languages"</h1>
+    <div id="timeline-container"></div>
+    <br/>
+    <fieldset>
+      <legend>Please select type of appendix page to open:</legend>
+      <div>
+        <input type="radio" id="docs" name="opt" value="docs" checked />
+        <label for="docs">Documentation</label>
+        <input type="radio" id="zik" name="opt" value="zik" />
+        <label for="zik">Music</label>
+      </div>
+    </fieldset>
+    <p/>
+    Sorry, YouTube seems to always open in a new tab?
+    Anyone know how to fix this issue?
 
+    <script type="module">
+      import { ChronosTimeline } from "https://unpkg.com/chronos-timeline-md";
+
+      const markdownSource = `
+> NOTODAY
+> DEFAULTVIEW 1950|2030
+- [1982] Рапира
+- [1987] ABC
+- [1955] AUTOCODER
+- [1996] Aardappel
+- [2024] Beatrice
+- [1996] Charity
+- [1992] Esterel
+- [1989] FL
+- [1987] Fractran
+- [1965] GPM
+- [1980] Hope
+- [1990] J
+- [2013] L∃∀N
+- [2006] MCPL
+- [1985] Miranda
+- [1994] NESL
+- [1991] Oz
+- [1978] Poplar
+- [2020] Protem
+- [1965] SLC
+- [1986] Squiggol
+- [1988] UNITY
+- [2011] USELESS
+- [2007] rpython
+`;
+
+      const html = [
+"http://ershov-arc.iis.nsk.su/archive/eaindex.asp?lang=1&gid=391",
+"https://homepages.cwi.nl/~steven/abc/",
+"https://bitsavers.org/pdf/ibm/705/22-6726-1_autocoder_Feb57.pdf",
+"https://strlen.com/aardappel-language/",
+"https://hirrolot.github.io/posts/sat-supercompilation.html",
+"https://pll.cpsc.ucalgary.ca/charity1/www/home.html",
+"https://www-sop.inria.fr/esterel.org/files/Html/About/AboutEsterel.htm",
+"https://theory.stanford.edu/~aiken/publications/trs/RJ7100.pdf",
+"https://doi.org/10.1080%2F0025570X.1983.11977011",
+"https://doi.org/10.1093/comjnl/8.3.225",
+"https://homepages.inf.ed.ac.uk/dts/pub/hope.pdf",
+"https://www.jsoftware.com/#/",
+"https://lean-lang.org/",
+"https://www.cl.cam.ac.uk/~mr10/mcplman.pdf",
+"https://www.cs.kent.ac.uk/people/staff/dat/miranda/",
+"https://www.cs.cmu.edu/~scandal/nesl.html",
+"https://webperso.info.ucl.ac.be/~pvr/book.html",
+"https://www.softwarepreservation.org/projects/poplar",
+"https://www.cs.toronto.edu/~hehner/PT.pdf",
+"https://op.europa.eu/en/publication-detail/-/publication/23b5829c-a779-4ec0-b12b-f9f5636d9e67",
+"https://en.wikipedia.org/wiki/Bird–Meertens_formalism",
+"https://en.wikipedia.org/wiki/UNITY_(programming_language)",
+"https://www.t3x.org/files/u.shar.Z",
+"https://rpython.readthedocs.io/",
+]
+
+      const src = [
+"https://www.youtube.com/watch?v=HEuetQHV8BM",
+"https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+"https://www.youtube.com/watch?v=75ScD5b9RAY",
+"https://www.youtube.com/watch?v=zWaymcVmJ-A",
+"https://www.youtube.com/watch?v=MAT94PiY64E",
+"https://www.youtube.com/watch?v=GFW-WfuX2Dk",
+"https://www.youtube.com/watch?v=JYIaWeVL1JM",
+"https://www.youtube.com/watch?v=2uKLTtVqQpE",
+"https://www.youtube.com/watch?v=Cv6tuzHUuuk",
+"https://www.youtube.com/watch?v=vstNm5xzuKM",
+"https://www.youtube.com/watch?v=mJpymZpk-t8",
+"https://www.youtube.com/watch?v=k2C5TjS2sh4",
+"https://www.youtube.com/watch?v=yyDUC1LUXSU",
+"https://www.youtube.com/watch?v=-N4jf6rtyuw",
+"https://www.youtube.com/watch?v=b_zHQ6kFuQ0",
+"https://www.youtube.com/watch?v=iqu132vTl5Y",
+"https://www.youtube.com/watch?v=n4RjJKxsamQ",
+"https://www.youtube.com/watch?v=fNFzfwLM72c",
+"https://www.youtube.com/watch?v=q0hyYWKXF0Q",
+"https://www.youtube.com/watch?v=2Q_ZzBGPdqE",
+"https://www.youtube.com/watch?v=9jK-NcRmVcw",
+"https://www.youtube.com/watch?v=6ElCpHuiWkA",
+"https://www.youtube.com/watch?v=KQ6zr6kCPj8",
+"https://www.youtube.com/watch?v=2Ua9af7xC9c",
+]
+
+      const timeline = new ChronosTimeline({
+        container: document.getElementById("timeline-container"),
+        settings: { align: "center", selectedLocale: "en" },
+      });
+      
+      timeline.render(markdownSource);
+      
+      timeline.on("select", (event) => {
+        const id = event.items[0]
+        for(var i=0; i<timeline.items.length; i++) {
+            if(id == timeline.items[i].id) {
+                if(document.getElementById("docs").checked) {
+                    window.open(html[i], "Foo");
+                } else {
+                    window.open(src[i], "Bar");
+                }
+                break;
+            }
+        }
+      });
+    </script>
+
+  </body>
+</html>
